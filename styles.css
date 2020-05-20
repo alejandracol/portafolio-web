@@ -1,0 +1,332 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-color: rgb(0, 100, 100);
+    --complementary-color: rgb(100, 0, 50);
+    --neutral-color: rgb(200, 200, 200);
+}
+
+html {
+    font-size: 10px;
+    scroll-behavior: smooth;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Jost', 'Segoe UI';
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+nav, main {
+    max-width: 1500px;
+    width: 100%;
+    padding: 4rem;
+}
+
+nav, h1, h2 {
+    font-family: 'Space Mono', 'IBM PLex Mono', 'Roboto Mono';
+}
+
+h2 {
+    padding: 2rem 0;
+    text-align: center;
+}
+
+#navbar {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    background-color: white;
+    z-index: 1;
+}
+
+#logo {
+    height: 80px;
+}
+
+.dropdown-btn span {
+    display: none;
+    padding: 0.8rem 0;
+    text-align: center;
+    color: var(--main-color);
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.nav-list a {
+    padding-left: 10rem;
+    text-transform: capitalize;
+}
+
+.nav-list a:hover, .nav-list a:focus {
+    font-weight: bold;
+    color: var(--main-color);
+}
+
+#welcome-section {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    background-image: url(back.jpg);
+    background-repeat: no-repeat;
+    background-size: auto 85vh;
+    background-position: center right 50px;
+}
+
+.projects-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.project-tile {
+    position: relative;
+    margin: 2rem 1rem;
+    min-width: 450px;
+    height: 350px;
+    border-radius: 15px;
+    box-shadow: 0 1px 1px var(--neutral-color);
+    overflow: hidden;
+}
+
+.project-1 { background-color: rgba(100, 0, 50, 0.2); }
+
+.project-2 { background-color: rgba(200, 200, 200, 0.2); }
+
+.project-3 { background-color: rgba(0, 100, 0, 0.2); }
+
+.project-4 { background-color: rgba(0, 0, 100, 0.2); }
+
+.project-image {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.project-tile:hover .project-image, .project-tile:focus-within .project-image {
+    filter: brightness(0.5) blur(3px) opacity(0.3);
+    transition: filter 0.3s ease-in;
+}
+
+.project-title, .project-link {
+    display: none;
+    position: absolute;
+    text-align: center;
+}
+
+.project-tile:hover .project-title, .project-tile:focus-within .project-title {
+    display: block;
+    bottom: 0;
+    padding: 1rem 0;
+    width: 100%;
+    background-color: white;
+    text-transform: capitalize;
+    animation: display-project-title 0.3s forwards;
+}
+
+@keyframes display-project-title { from { height: 0; } to { height: 5rem; } }
+
+.project-tile:hover .project-link, .project-tile:focus-within .project-link {
+    display: block;
+    top: calc(50% - 40px - 20px);
+    left: calc(50% - 40px);
+    padding: 2rem 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    color: white;
+    background-color: var(--complementary-color);
+    text-transform: uppercase;
+    animation: display-project-link 0.3s ease-in forwards;
+}
+
+@keyframes display-project-link { from { transform: scale(0); } to { transform: scale(1); } }
+
+#contact {
+    background-image: url(back2.jpg);
+    background-repeat: no-repeat;
+    background-position: top center;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 200px;
+}
+
+.contact-links a {
+    display: flex;
+    align-items: center;
+}
+
+.contact-links i {
+    margin-right: 1rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-size: contain;
+}
+
+.contact-links a:hover i, .contact-links a:focus i {
+    background-color: rgb(150, 0, 75);
+}
+
+.github-logo { background-image: url(github-logo.png);  }
+
+.linkedin-logo { background-image: url(linkedin-logo.png); }
+
+.gmail-logo { background-image: url(gmail-logo.png); }
+
+footer{
+    padding-bottom: 4rem;
+}
+
+footer a:hover, footer a:focus {
+    font-weight: bold;
+    color: var(--main-color);
+}
+
+@media (max-width: 1500px) {
+    .project-tile {
+        width: 40%;
+    }
+}
+
+@media (max-width: 1050px) {
+    #welcome-section {
+        background-size: 60vw auto;
+        background-position: center right;
+    }
+
+    .project-tile {
+        width: 60%;
+    }
+}
+
+@media (max-width: 800px) {
+    #welcome-section {
+        justify-content: center;
+        background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(back.jpg);
+        background-size: auto 85vh;
+        background-position: center;
+    }
+
+    .nav-list {
+        display: none;
+    }
+
+    .dropdown-btn span {
+        display: block;
+    }
+
+    .dropdown-btn {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        border: 1px solid var(--main-color);
+    }
+
+    .dropdown-btn:hover, .dropdown-btn:focus-within {
+        position: absolute;
+        right: -80px;
+        width: 250px;
+        height: 250px;
+        border: none;
+        background-color: var(--main-color);
+    }
+
+    .dropdown-btn:hover span, .dropdown-btn:focus-within span {
+        display: none;
+    }
+
+    .dropdown-btn:hover .nav-list, .dropdown-btn:focus-within .nav-list  {
+        display: block;
+        position: relative;
+        top: 100px;
+        left: -50px;
+        color: white;
+    }
+
+    .nav-list a:hover, .nav-list a:focus {
+        color: white;
+    }
+}
+
+@media (max-width: 600px) {
+    html {
+        font-size: 8px;
+    }
+
+    nav, main {
+        padding: 2rem;
+    }
+
+    #navbar {
+        height: 60px;
+    }
+    
+    #logo {
+        height: 50px;
+    }
+
+    .dropdown-btn {
+        width: 30px;
+        height: 30px;
+    }
+
+    .dropdown-btn span {
+        padding: 0.35rem 0;
+    }
+
+    .dropdown-btn:hover, .dropdown-btn:focus-within  {
+        width: 200px;
+        height: 200px;
+    }
+
+    .dropdown-btn:hover .nav-list, .dropdown-btn:focus-within .nav-list {
+        top: 80px;
+    }
+
+    .project-tile:hover .project-link, .project-tile:focus-within .project-link  {
+        top: calc(50% - 30px - 15px);
+        left: calc(50% - 30px);
+        width: 60px;
+        height: 60px;
+    }
+
+    footer{
+        padding-bottom: 2rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .project-tile {
+        width: 100%;
+        min-width: 300px;
+        height: 250px;
+    }
+
+    .contact-links {
+        flex-direction: column;
+    }
+}
